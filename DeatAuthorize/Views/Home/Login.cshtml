@@ -1,0 +1,23 @@
+﻿@model DeatAuthorize.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-md-8">
+        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @placeholder = "Tài khoản", @required = "" })
+        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-md-8" style="margin-top:10px">
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Mật khẩu", @required = "" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-md-8" style="margin-top:10px">
+        <button class="btn btn-primary submit">Login</button>
+    </div>
+}
+
